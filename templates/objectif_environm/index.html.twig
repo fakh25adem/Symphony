@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objectif Environnement index{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <!-- Titre principal -->
+        <h1 class="text-center mb-4">Liste des Objectifs Environnementaux</h1>
+
+        <!-- Table des Objectifs Environnementaux -->
+        <div class="card shadow-sm rounded-3">
+            <div class="card-body">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Statut</th>
+                        <th>Points Cibles</th>
+                        <th>Points Cumulés</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for objectif_environm in objectif_environms %}
+                        <tr>
+                            <td>{{ objectif_environm.id }}</td>
+                            <td>{{ objectif_environm.titre }}</td>
+                            <td>{{ objectif_environm.description }}</td>
+                            <td>{{ objectif_environm.dateDebut ? objectif_environm.dateDebut|date('Y-m-d') : '' }}</td>
+                            <td>{{ objectif_environm.dateFin ? objectif_environm.dateFin|date('Y-m-d') : '' }}</td>
+                            <td>
+                                {% if objectif_environm.statut == 'en cours' and objectif_environm.dateFin|date("Y-m-d") < "now"|date("Y-m-d") %}
+                                    Échec
+                                {% else %}
+                                    {{ objectif_environm.statut }}
+                                {% endif %}
+                            </td>                            <td>{{ objectif_environm.ptsCible }}</td>
+                            <td>{{ objectif_environm.ptsCummules }}</td>
+
+                            <td>
+                                <a href="{{ path('app_objectif_environm_show', {'id': objectif_environm.id}) }}" class="btn btn-info btn-sm">Afficher</a>
+                                <a href="{{ path('app_objectif_environm_edit', {'id': objectif_environm.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9" class="text-center">Aucun objectif trouvé</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lien pour créer un nouvel objectif -->
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{{ path('app_objectif_environm_new') }}" class="btn btn-success btn-lg">
+               <br>
+                <i class="bi bi-plus-circle"></i> Créer un nouvel objectif
+            </a>
+        </div>
+    </div>
+
+    <!-- CSS intégré -->
+    <style>
+        /* Personnalisation générale de la table */
+        table {
+            font-size: 14px;
+            width: 100%;
+        }
+
+        /* Design des boutons */
+        .btn {
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Améliorer l'apparence de la table */
+        .table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Couleur de l'en-tête */
+        .table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Personnalisation des cellules de la table */
+        .table td {
+            background-color: #f1f1f1;
+        }
+
+        /* Centrage du texte dans les cellules */
+        .table td, .table th {
+            text-align: center;
+        }
+
+        /* Boutons d'action */
+        .btn-sm {
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+
+        /* Style du lien de retour */
+        a {
+            text-decoration: none;
+        }
+
+        /* Amélioration du texte de titre */
+        h1 {
+            color: #343a40;
+        }
+    </style>
+{% endblock %}

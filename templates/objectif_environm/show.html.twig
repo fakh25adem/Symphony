@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'Objectif Environnement{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Détails de l'Objectif Environnement</h1>
+
+        <!-- Card contenant les détails de l'Objectif Environnement -->
+        <div class=" shadow-sm rounded-3">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ objectif_environm.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ objectif_environm.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ objectif_environm.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de début</th>
+                        <td>{{ objectif_environm.dateDebut ? objectif_environm.dateDebut|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de fin</th>
+                        <td>{{ objectif_environm.dateFin ? objectif_environm.dateFin|date('Y-m-d') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut</th>
+                        <td>{{ objectif_environm.statut }}</td>
+                    </tr>
+                    <tr>
+                        <th>Points Cible</th>
+                        <td>{{ objectif_environm.ptsCible }}</td>
+                    </tr>
+                    <tr>
+                        <th>Points Cumulés</th>
+                        <td>{{ objectif_environm.ptsCummules }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Liens de navigation -->
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_objectif_environm_index') }}" class="btn btn-primary">
+                <br>
+                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+            </a>
+            <a href="{{ path('app_objectif_environm_edit', {'id': objectif_environm.id}) }}" class="btn btn-warning">
+
+                <i class="bi bi-pencil"></i> Modifier
+            </a>
+        </div>
+
+        <!-- Formulaire de suppression -->
+        <div class="mt-3">
+            <br>
+            {{ include('objectif_environm/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <!-- CSS personnalisé -->
+    <style>
+        /* Personnalisation générale des tables */
+        table {
+            font-size: 14px;
+        }
+
+        /* Design des boutons */
+        .btn {
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Personnalisation de la carte */
+        .card {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style des liens de retour */
+        a {
+            text-decoration: none;
+        }
+
+        /* Mise en forme des cellules de la table */
+        th {
+            width: 150px;
+            text-align: left;
+            background-color: #f0f8ff;
+        }
+
+        td {
+            padding-left: 20px;
+        }
+
+        .table-bordered {
+            border: 1px solid #ccc;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+        }
+
+        /* Style des boutons d'action */
+        .btn-sm {
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+
+        /* Amélioration du texte de titre */
+        h1 {
+            color: #343a40;
+        }
+
+        /* Lien de suppression */
+        .btn-danger {
+            background-color: #e74a3b;
+            border: none;
+        }
+
+        /* Effet de survol des boutons */
+        .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+{% endblock %}

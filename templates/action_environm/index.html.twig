@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actions Environnementales - Liste{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <!-- Titre principal -->
+        <h1 class="text-center mb-4">Liste des Actions Environnementales</h1>
+        <div class="d-flex justify-content-end mb-4">
+            <a href="{{ path('app_action_environm_export_csv') }}" class="btn btn-primary">
+                Exporter en CSV
+            </a>
+        </div>
+        <!-- Table des Actions Environnementales -->
+        <div class="card shadow-sm rounded-3">
+            <div class="card-body">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Impact Carbone</th>
+                        <th>Points</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for action_environm in action_environms %}
+                        <tr>
+                            <td>{{ action_environm.id }}</td>
+                            <td>{{ action_environm.type }}</td>
+                            <td>{{ action_environm.description }}</td>
+                            <td>{{ action_environm.date ? action_environm.date|date('Y-m-d') : '' }}</td>
+                            <td>{{ action_environm.impactCarbon }}</td>
+                            <td>{{ action_environm.points }}</td>
+                            <td>
+                                <a href="{{ path('app_action_environm_show', {'id': action_environm.id}) }}" class="btn btn-info btn-sm">Afficher</a>
+                                <a href="{{ path('app_action_environm_edit', {'id': action_environm.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">Aucune action environnementale trouvée</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lien pour créer une nouvelle action -->
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{{ path('app_action_environm_new') }}" class="btn btn-success btn-lg">
+                <br>
+                <i class="bi bi-plus-circle"></i> Créer une nouvelle action
+            </a>
+        </div>
+    </div>
+
+    <!-- CSS intégré -->
+    <style>
+        /* Personnalisation générale de la table */
+        table {
+            font-size: 14px;
+            width: 100%;
+        }
+
+        /* Design des boutons */
+        .btn {
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Amélioration de l'apparence de la table */
+        .table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* Couleur de l'en-tête */
+        .table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Personnalisation des cellules de la table */
+        .table td {
+            background-color: #f1f1f1;
+        }
+
+        /* Centrage du texte dans les cellules */
+        .table td, .table th {
+            text-align: center;
+        }
+
+        /* Boutons d'action */
+        .btn-sm {
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+
+        /* Style du lien de retour */
+        a {
+            text-decoration: none;
+        }
+
+        /* Amélioration du texte de titre */
+        h1 {
+            color: #343a40;
+        }
+    </style>
+{% endblock %}
