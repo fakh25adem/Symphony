@@ -42,6 +42,7 @@ class ActionEnvironmType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ActionEnvironm::class,
+            'csrf_protection' => false,
         ]);
     }
 }

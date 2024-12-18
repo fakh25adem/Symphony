@@ -37,6 +37,7 @@ class ObjectifEnvironmType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ObjectifEnvironm::class,
+            'csrf_protection' => false,
         ]);
     }
 }

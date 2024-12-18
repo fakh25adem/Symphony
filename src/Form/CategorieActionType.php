@@ -21,6 +21,7 @@ class CategorieActionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => CategorieAction::class,
+            'csrf_protection' => false,
         ]);
     }
 }

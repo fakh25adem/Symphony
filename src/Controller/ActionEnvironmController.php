@@ -35,13 +35,7 @@ final class ActionEnvironmController extends AbstractController
             $objectifs = $actionEnvironm->getObjectifs();
 
             foreach ($objectifs as $objectif) {
-                $actionDate = $actionEnvironm->getDate();
-                $dateDebut = $objectif->getDateDebut();
-                $dateFin = $objectif->getDateFin();
-                $actionDate = new DateTime($actionDate->format('Y-m-d'));
-                $dateDebut = new DateTime($dateDebut->format('Y-m-d'));
-                $dateFin = new DateTime($dateFin->format('Y-m-d'));
-                if ($actionDate >= $dateDebut && $actionDate <= $dateFin) {
+
 
                     $objectif->setPtsCummules($actionEnvironm->getPoints() + $objectif->getPtsCummules());
                     if ($objectif->getPtsCummules() < $objectif->getPtsCible()) {
@@ -57,7 +51,7 @@ final class ActionEnvironmController extends AbstractController
                 }
             }
 
-        }
+
 
         return $this->render('action_environm/new.html.twig', [
             'action_environm' => $actionEnvironm,
