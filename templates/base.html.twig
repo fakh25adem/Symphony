@@ -15,30 +15,44 @@
     </head>
     <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary shadow">
         <div class="container">
-            <a class="navbar-brand" href="#">Environnement</a>
+            <!-- Brand Logo -->
+            <a class="navbar-brand font-weight-bold" href="#">
+                <i class="bi bi-globe"></i> BioCarbonate
+            </a>
+            <!-- Mobile Toggle Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_action_environm_index') }}">User</a>
+                        <a class="nav-link text-white" href="{{ path('app_user_index') }}">
+                            <i class="bi bi-person"></i> User
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_action_environm_index') }}">Catégorie</a>
+                        <a class="nav-link text-white" href="{{ path('app_categorie_action_index') }}">
+                            <i class="bi bi-tags"></i> Catégorie
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_action_environm_index') }}">Action</a>
+                        <a class="nav-link text-white" href="{{ path('app_action_environm_index') }}">
+                            <i class="bi bi-list-check"></i> Action
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_action_environm_index') }}">Objectif</a>
+                        <a class="nav-link text-white" href="{{ path('app_objectif_environm_index') }}">
+                            <i class="bi bi-flag"></i> Objectif
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <!-- Contenu de la page -->
     <div class="container mt-4">
