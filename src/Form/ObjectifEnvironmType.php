@@ -27,7 +27,7 @@ class ObjectifEnvironmType extends AbstractType
             ->add('pts_cummules')
             ->add('actions', EntityType::class, [
                 'class' => ActionEnvironm::class,
-                'choice_label' => 'id',
+                'choice_label' => 'type',
                 'multiple' => true,
             ])
         ;
