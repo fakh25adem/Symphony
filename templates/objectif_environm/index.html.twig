@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Objectif Environnement index{% endblock %}
+{% block title %}Objectifs Environnement - Liste{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 15px; padding: 30px;">
         <!-- Titre principal -->
-        <h1 class="text-center mb-4">Liste des Objectifs Environnementaux</h1>
+        <h1 class="text-center mb-4 text-primary"><i class="bi bi-flag-fill"></i> Liste des Objectifs Environnementaux</h1>
 
         <!-- Table des Objectifs Environnementaux -->
-        <div class="card shadow-sm rounded-3">
+        <div class="card shadow-lg border-primary mb-4">
             <div class="card-body">
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
@@ -21,7 +21,7 @@
                         <th>Statut</th>
                         <th>Points Cibles</th>
                         <th>Points Cumulés</th>
-                        <th>Actions</th>
+                        <th class="actions-column">Actions</th> <!-- Classe personnalisée pour la colonne Actions -->
                     </tr>
                     </thead>
                     <tbody>
@@ -38,12 +38,19 @@
                                 {% else %}
                                     {{ objectif_environm.statut }}
                                 {% endif %}
-                            </td>                            <td>{{ objectif_environm.ptsCible }}</td>
+                            </td>
+                            <td>{{ objectif_environm.ptsCible }}</td>
                             <td>{{ objectif_environm.ptsCummules }}</td>
-
                             <td>
-                                <a href="{{ path('app_objectif_environm_show', {'id': objectif_environm.id}) }}" class="btn btn-info btn-sm">Afficher</a>
-                                <a href="{{ path('app_objectif_environm_edit', {'id': objectif_environm.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                                <!-- Conteneur pour les boutons côte à côte -->
+                                <div class="d-flex">
+                                    <a href="{{ path('app_objectif_environm_show', {'id': objectif_environm.id}) }}" class="btn btn-info btn-sm me-2">
+                                        <i class="bi bi-eye-fill"></i> Afficher
+                                    </a>
+                                    <a href="{{ path('app_objectif_environm_edit', {'id': objectif_environm.id}) }}" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-fill"></i> Modifier
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     {% else %}
@@ -59,8 +66,7 @@
         <!-- Lien pour créer un nouvel objectif -->
         <div class="d-flex justify-content-center mt-4">
             <a href="{{ path('app_objectif_environm_new') }}" class="btn btn-success btn-lg">
-               <br>
-                <i class="bi bi-plus-circle"></i> Créer un nouvel objectif
+                <i class="bi bi-plus-circle-fill"></i> Créer un nouvel objectif
             </a>
         </div>
     </div>
@@ -75,9 +81,9 @@
 
         /* Design des boutons */
         .btn {
-            border-radius: 20px;
-            padding: 8px 20px;
-            font-size: 14px;
+            border-radius: 25px;
+            padding: 10px 25px;  /* Agrandir légèrement les boutons */
+            font-size: 16px;  /* Légèrement plus grand */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -120,8 +126,8 @@
 
         /* Boutons d'action */
         .btn-sm {
-            font-size: 12px;
-            padding: 5px 12px;
+            font-size: 14px;  /* Augmenter légèrement la taille des petits boutons */
+            padding: 8px 18px;  /* Augmenter légèrement la taille des petits boutons */
         }
 
         /* Style du lien de retour */
@@ -132,6 +138,16 @@
         /* Amélioration du texte de titre */
         h1 {
             color: #343a40;
+        }
+
+        /* Espacement entre les boutons */
+        .me-2 {
+            margin-right: 10px; /* Espacement entre les boutons */
+        }
+
+        /* Agrandir la colonne des actions */
+        .actions-column {
+            width: 250px; /* Largeur personnalisée pour la colonne Actions */
         }
     </style>
 {% endblock %}

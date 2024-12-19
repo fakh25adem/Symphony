@@ -3,11 +3,12 @@
 {% block title %}Détails de l'Action Environnementale{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Détails de l'Action Environnementale</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 10px; padding: 30px;">
+
+        <h1 class="text-center mb-4 text-primary">Détails de l'Action Environnementale</h1>
 
         <!-- Card contenant les détails de l'Action -->
-        <div class=" shadow-sm rounded-3">
+        <div class="shadow-lg border-primary rounded-3">
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tbody>
@@ -43,7 +44,6 @@
         <!-- Liens de navigation -->
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ path('app_action_environm_index') }}" class="btn btn-primary">
-                <br>
                 <i class="bi bi-arrow-left-circle"></i> Retour à la liste
             </a>
             <a href="{{ path('app_action_environm_edit', {'id': action_environm.id}) }}" class="btn btn-warning">
@@ -53,7 +53,6 @@
 
         <!-- Formulaire de suppression -->
         <div class="mt-3">
-            <br>
             {{ include('action_environm/_delete_form.html.twig') }}
         </div>
     </div>
@@ -63,6 +62,7 @@
         /* Personnalisation générale des tables */
         table {
             font-size: 14px;
+            width: 100%;
         }
 
         /* Design des boutons */

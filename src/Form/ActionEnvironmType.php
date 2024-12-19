@@ -25,15 +25,15 @@ class ActionEnvironmType extends AbstractType
 
             ->add('categorie', EntityType::class, [
                 'class' => CategorieAction::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
             ->add('objectifs', EntityType::class, [
                 'class' => ObjectifEnvironm::class,
-                'choice_label' => 'id',
+                'choice_label' => 'titre',
                 'multiple' => true,
             ])
         ;

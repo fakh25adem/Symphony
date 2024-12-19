@@ -3,11 +3,12 @@
 {% block title %}Détails de la Catégorie d'Action{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Détails de la Catégorie d'Action</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 15px; padding: 30px;">
+        <!-- Titre principal -->
+        <h1 class="text-center mb-4 text-primary"><i class="bi bi-clipboard-check"></i> Détails de la Catégorie d'Action</h1>
 
         <!-- Card contenant les détails de la Catégorie -->
-        <div class="shadow-sm rounded-3">
+        <div class="card shadow-lg border-primary mb-4">
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tbody>
@@ -30,18 +31,16 @@
 
         <!-- Liens de navigation -->
         <div class="d-flex justify-content-between mt-4">
-            <a href="{{ path('app_categorie_action_index') }}" class="btn btn-primary">
-                <br>
-                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+            <a href="{{ path('app_categorie_action_index') }}" class="btn btn-primary" style="border-radius: 20px;">
+                <i class="bi bi-arrow-left-circle-fill"></i> Retour à la liste
             </a>
-            <a href="{{ path('app_categorie_action_edit', {'id': categorie_action.id}) }}" class="btn btn-warning">
-                <i class="bi bi-pencil"></i> Modifier
+            <a href="{{ path('app_categorie_action_edit', {'id': categorie_action.id}) }}" class="btn btn-warning" style="border-radius: 20px;">
+                <i class="bi bi-pencil-fill"></i> Modifier
             </a>
         </div>
 
         <!-- Formulaire de suppression -->
         <div class="mt-3">
-            <br>
             {{ include('categorie_action/_delete_form.html.twig') }}
         </div>
     </div>
@@ -55,7 +54,7 @@
 
         /* Design des boutons */
         .btn {
-            border-radius: 25px;
+            border-radius: 20px;
             padding: 8px 20px;
             font-size: 14px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

@@ -1,11 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ActionEnvironm{% endblock %}
+{% block title %}Créer une Action Environnementale{% endblock %}
 
 {% block body %}
-    <h1>Create new ActionEnvironm</h1>
+    <!-- Main Container with Background Color and Padding -->
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 10px; padding: 30px;">
 
-    {{ include('action_environm/_form.html.twig') }}
+        <!-- Title with Centered Text and Primary Color -->
+        <h1 class="mb-4 text-center text-primary">Créer une Action Environnementale</h1>
 
-    <a href="{{ path('app_action_environm_index') }}">back to list</a>
+        <!-- Success/Alert Messages -->
+        {% if app.session.flashbag.has('success') %}
+            <div class="alert alert-success">
+                {{ app.session.flashbag.get('success')[0] }}
+            </div>
+        {% elseif app.session.flashbag.has('error') %}
+            <div class="alert alert-danger">
+                {{ app.session.flashbag.get('error')[0] }}
+            </div>
+        {% endif %}
+
+        <!-- Card for Form with Modern Design -->
+        <div class="card shadow-lg border-primary mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-plus-circle"></i> Créer une nouvelle action environnementale</h5>
+            </div>
+            <div class="card-body">
+                <!-- Form -->
+                {{ include('action_environm/_form.html.twig', {'button_label': 'Créer'}) }}
+            </div>
+        </div>
+
+        <!-- Back Button with Icon -->
+        <a href="{{ path('app_action_environm_index') }}" class="btn btn-outline-primary mt-4">
+            <i class="fas fa-arrow-left"></i> Retour à la liste
+        </a>
+    </div>
 {% endblock %}

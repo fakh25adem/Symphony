@@ -3,11 +3,11 @@
 {% block title %}Détails de l'Objectif Environnement{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Détails de l'Objectif Environnement</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 15px; padding: 30px;">
+        <h1 class="text-center mb-4 text-primary"><i class="bi bi-flag-fill"></i> Détails de l'Objectif Environnement</h1>
 
         <!-- Card contenant les détails de l'Objectif Environnement -->
-        <div class=" shadow-sm rounded-3">
+        <div class="card shadow-lg border-primary mb-4">
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tbody>
@@ -51,18 +51,15 @@
         <!-- Liens de navigation -->
         <div class="d-flex justify-content-between mt-4">
             <a href="{{ path('app_objectif_environm_index') }}" class="btn btn-primary">
-                <br>
                 <i class="bi bi-arrow-left-circle"></i> Retour à la liste
             </a>
             <a href="{{ path('app_objectif_environm_edit', {'id': objectif_environm.id}) }}" class="btn btn-warning">
-
                 <i class="bi bi-pencil"></i> Modifier
             </a>
         </div>
 
         <!-- Formulaire de suppression -->
         <div class="mt-3">
-            <br>
             {{ include('objectif_environm/_delete_form.html.twig') }}
         </div>
     </div>
@@ -77,8 +74,8 @@
         /* Design des boutons */
         .btn {
             border-radius: 25px;
-            padding: 8px 20px;
-            font-size: 14px;
+            padding: 10px 25px;  /* Agrandir légèrement les boutons */
+            font-size: 16px;  /* Légèrement plus grand */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -119,8 +116,8 @@
 
         /* Style des boutons d'action */
         .btn-sm {
-            font-size: 12px;
-            padding: 5px 12px;
+            font-size: 14px;  /* Augmenter légèrement la taille des petits boutons */
+            padding: 8px 18px;  /* Augmenter légèrement la taille des petits boutons */
         }
 
         /* Amélioration du texte de titre */
@@ -137,6 +134,16 @@
         /* Effet de survol des boutons */
         .btn:hover {
             opacity: 0.8;
+        }
+
+        /* Agrandir la colonne des actions */
+        .actions-column {
+            width: 250px; /* Largeur personnalisée pour la colonne Actions */
+        }
+
+        /* Espacement entre les boutons */
+        .d-flex a {
+            margin-right: 15px;  /* Espacement entre les boutons */
         }
     </style>
 {% endblock %}

@@ -1,4 +1,45 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'form'}}) }}
+<div class="form-group">
+    {{ form_label(form.type, 'Action Type', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.description, 'Description', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.description) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.date, 'Date', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.date) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.impact_carbon, 'Impact on Carbon', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.impact_carbon, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.impact_carbon) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.categorie, 'Category', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.categorie) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.user, 'User', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.user) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.objectifs, 'Objectives', {'label_attr': {'class': 'font-weight-bold'}}) }}
+    {{ form_widget(form.objectifs, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.objectifs) }}
+</div>
+
+<button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

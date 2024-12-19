@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User Index{% endblock %}
+{% block title %}Liste des Utilisateurs{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <!-- Titre principal -->
-        <h1 class="text-center mb-4">Liste des utilisateurs</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 10px; padding: 30px;">
+
+        <!-- Title with Centered Text and Primary Color -->
+        <h1 class="mb-4 text-center text-primary">
+            <i class="fas fa-users"></i> Liste des Utilisateurs
+        </h1>
 
         <!-- Table des utilisateurs -->
-        <div class="card shadow-sm rounded-3">
+        <div class="card shadow-lg border-primary mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-users"></i> Liste des Utilisateurs</h5>
+            </div>
             <div class="card-body">
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
@@ -16,8 +22,7 @@
                         <th>ID</th>
                         <th>Nom</th>
                         <th>Email</th>
-                        <th>Password</th>
-                        <th>Actions</th>
+                        <th style="width: 250px;">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,15 +31,21 @@
                             <td>{{ user.id }}</td>
                             <td>{{ user.nom }}</td>
                             <td>{{ user.email }}</td>
-                            <td>{{ user.password }}</td>
                             <td>
-                                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-info btn-sm">Afficher</a>
-                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                                <!-- Afficher et Modifier en même ligne -->
+                                <div class="d-flex justify-content-start gap-2">
+                                    <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-info btn-sm" style="border-radius: 20px;">
+                                        <i class="bi bi-eye"></i> Afficher
+                                    </a>
+                                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-warning btn-sm" style="border-radius: 20px;">
+                                        <i class="bi bi-pencil"></i> Modifier
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="5" class="text-center">Aucun utilisateur trouvé</td>
+                            <td colspan="4" class="text-center">Aucun utilisateur trouvé</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -42,82 +53,12 @@
             </div>
         </div>
 
-        <!-- Lien pour créer un nouvel utilisateur -->
+        <!-- Lien pour créer un utilisateur -->
         <div class="d-flex justify-content-center mt-4">
-            <a href="{{ path('app_user_new') }}" class="btn btn-success btn-lg">
-                <br>
-                <i class="bi bi-plus-circle"></i> Créer un nouvel utilisateur
+            <a href="{{ path('app_user_new') }}" class="btn btn-success btn-sm" style="border-radius: 20px;">
+                <i class="bi bi-plus-circle"></i> Créer un utilisateur
             </a>
         </div>
     </div>
 
-    <!-- CSS intégré -->
-    <style>
-        /* Personnalisation générale de la table */
-        table {
-            font-size: 14px;
-            width: 100%;
-        }
-
-        /* Design des boutons */
-        .btn {
-            border-radius: 20px;
-            padding: 8px 20px;
-            font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Améliorer l'apparence de la table */
-        .table {
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-
-        .table th,
-        .table td {
-            padding: 12px;
-            text-align: center;
-        }
-
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: #f9f9f9;
-        }
-
-        /* Ajustement du texte et de l'alignement */
-        .table th {
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Personnalisation des cellules de la table */
-        .table td {
-            background-color: #f1f1f1;
-        }
-
-        /* Centrage du texte dans les cellules */
-        .table td, .table th {
-            text-align: center;
-        }
-
-        /* Boutons d'action */
-        .btn-sm {
-            font-size: 12px;
-            padding: 5px 12px;
-        }
-
-        /* Style du lien de retour */
-        a {
-            text-decoration: none;
-        }
-
-        /* Amélioration du texte de titre */
-        h1 {
-            color: #343a40;
-        }
-    </style>
 {% endblock %}

@@ -1,11 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New CategorieAction{% endblock %}
+{% block title %}Créer une nouvelle Catégorie d'Action{% endblock %}
 
 {% block body %}
-    <h1>Create new CategorieAction</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 15px; padding: 30px;">
+        <!-- Titre principal -->
+        <h1 class="text-center mb-4 text-primary"><i class="bi bi-plus-circle-fill"></i> Créer une nouvelle Catégorie d'Action</h1>
 
-    {{ include('categorie_action/_form.html.twig') }}
+        <!-- Card contenant le formulaire -->
+        <div class="card shadow-lg border-primary mb-4">
+            <div class="card-body">
+                {{ include('categorie_action/_form.html.twig', {'button_label': 'Créer'}) }}
+            </div>
+        </div>
 
-    <a href="{{ path('app_categorie_action_index') }}">back to list</a>
+        <!-- Lien retour à la liste -->
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_categorie_action_index') }}" class="btn btn-primary" style="border-radius: 25px;">
+                <i class="bi bi-arrow-left-circle-fill"></i> Retour à la liste
+            </a>
+        </div>
+    </div>
+
+    <!-- Personnalisation du style -->
+    <style>
+        /* Personnalisation générale des boutons */
+        .btn {
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Personnalisation de la carte */
+        .card {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Boutons avec effet hover */
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Personnalisation du formulaire */
+        .card-body {
+            padding: 30px;
+        }
+
+        /* Réduire la taille des champs du formulaire */
+        .form-control {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        /* Retirer la couleur verte et garder le style original des boutons */
+        .btn-primary {
+            background-color: #007bff; /* Couleur bleue d'origine */
+            border-color: #007bff; /* Bordure bleue d'origine */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    </style>
 {% endblock %}

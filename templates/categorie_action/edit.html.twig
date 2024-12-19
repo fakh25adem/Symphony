@@ -1,13 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit CategorieAction{% endblock %}
+{% block title %}Modifier la Catégorie d'Action{% endblock %}
 
 {% block body %}
-    <h1>Edit CategorieAction</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 15px; padding: 30px;">
+        <!-- Titre principal -->
+        <h1 class="text-center mb-4 text-primary"><i class="bi bi-pencil-square"></i> Modifier la Catégorie d'Action</h1>
 
-    {{ include('categorie_action/_form.html.twig', {'button_label': 'Update'}) }}
+        <!-- Formulaire de modification -->
+        <div class="card shadow-lg border-primary mb-4">
+            <div class="card-body">
+                {{ include('categorie_action/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+            </div>
+        </div>
 
-    <a href="{{ path('app_categorie_action_index') }}">back to list</a>
+        <!-- Lien retour -->
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_categorie_action_index') }}" class="btn btn-primary" style="border-radius: 20px;">
+                <i class="bi bi-arrow-left-circle-fill"></i> Retour à la liste
+            </a>
 
-    {{ include('categorie_action/_delete_form.html.twig') }}
+            <!-- Formulaire de suppression -->
+            <a href="#" class="btn btn-danger" style="border-radius: 20px;" data-toggle="modal" data-target="#deleteModal">
+                <i class="bi bi-trash-fill"></i> Supprimer
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation pour la suppression -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmer la suppression</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer cette catégorie d'action ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    {{ include('categorie_action/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,13 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Modifier l'Utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 10px; padding: 30px;">
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+        <!-- Title with Centered Text and Primary Color -->
+        <h1 class="mb-4 text-center text-primary">Modifier l'Utilisateur</h1>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+        <!-- Card for Form with Modern Design -->
+        <div class="card shadow-lg border-primary mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-user-edit"></i> Modifier les informations de l'utilisateur</h5>
+            </div>
+            <div class="card-body">
+                {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+            </div>
+        </div>
 
-    {{ include('user/_delete_form.html.twig') }}
+        <!-- Back Button with Icon -->
+        <a href="{{ path('app_user_index') }}" class="btn btn-outline-primary mt-4">
+            <i class="fas fa-arrow-left"></i> Retour à la liste
+        </a>
+
+    </div>
 {% endblock %}

@@ -1,13 +1,108 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ObjectifEnvironm{% endblock %}
+{% block title %}Modifier l'Objectif Environnement{% endblock %}
 
 {% block body %}
-    <h1>Edit ObjectifEnvironm</h1>
+    <div class="container mt-5" style="background-color: #f0f8ff; border-radius: 15px; padding: 30px;">
+        <!-- Titre principal -->
+        <h1 class="text-center mb-4 text-primary"><i class="bi bi-pencil-fill"></i> Modifier l'Objectif Environnement</h1>
 
-    {{ include('objectif_environm/_form.html.twig', {'button_label': 'Update'}) }}
+        <!-- Card contenant le formulaire de modification -->
+        <div class="card shadow-lg border-primary mb-4">
+            <div class="card-body">
+                {{ include('objectif_environm/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+            </div>
+        </div>
 
-    <a href="{{ path('app_objectif_environm_index') }}">back to list</a>
+        <!-- Lien retour à la liste -->
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_objectif_environm_index') }}" class="btn btn-primary">
+                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+            </a>
+            {{ include('objectif_environm/_delete_form.html.twig') }}
+        </div>
+    </div>
 
-    {{ include('objectif_environm/_delete_form.html.twig') }}
+    <!-- CSS personnalisé -->
+    <style>
+        /* Personnalisation générale des tables */
+        table {
+            font-size: 14px;
+        }
+
+        /* Design des boutons */
+        .btn {
+            border-radius: 25px;
+            padding: 10px 25px;  /* Agrandir légèrement les boutons */
+            font-size: 16px;  /* Légèrement plus grand */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Personnalisation de la carte */
+        .card {
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style des liens de retour */
+        a {
+            text-decoration: none;
+        }
+
+        /* Mise en forme des cellules de la table */
+        th {
+            width: 150px;
+            text-align: left;
+            background-color: #f0f8ff;
+        }
+
+        td {
+            padding-left: 20px;
+        }
+
+        .table-bordered {
+            border: 1px solid #ccc;
+        }
+
+        .table th, .table td {
+            padding: 15px;
+        }
+
+        /* Style des boutons d'action */
+        .btn-sm {
+            font-size: 14px;  /* Augmenter légèrement la taille des petits boutons */
+            padding: 8px 18px;  /* Augmenter légèrement la taille des petits boutons */
+        }
+
+        /* Amélioration du texte de titre */
+        h1 {
+            color: #343a40;
+        }
+
+        /* Lien de suppression */
+        .btn-danger {
+            background-color: #e74a3b;
+            border: none;
+        }
+
+        /* Effet de survol des boutons */
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Agrandir la colonne des actions */
+        .actions-column {
+            width: 250px; /* Largeur personnalisée pour la colonne Actions */
+        }
+
+        /* Espacement entre les boutons */
+        .d-flex a {
+            margin-right: 15px;  /* Espacement entre les boutons */
+        }
+    </style>
 {% endblock %}
